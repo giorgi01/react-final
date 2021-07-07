@@ -1,18 +1,33 @@
-import React from 'react';
-import LoginPage from './pages/login-page/LoginPage';
-import { Switch, Route } from 'react-router';
+import React, { useState } from 'react';
+import Login from './components/login/Login.js';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import useToken from './components/token/useToken';
+import Navigation from './components/navigation/navigation.js';
 
 function App() {
-  return (
+  const { token, setToken } = useToken();
+
+  const ifTokenExists = (comp) => {
+    return !token ? <Login setToken={setToken} /> : comp;
+  };
+
+  return !token ? (
+    <Login setToken={setToken} />
+  ) : (
     <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <LoginPage />
-        </Route>
-        <Route exact path="/expenses">
-          Expenses
-        </Route>
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {ifTokenExists(<Navigation />)}
+          </Route>
+          <Route exact path="/expenses">
+            {/* {ifTokenExists(<ExpensesManager />)} */}
+          </Route>
+          <Route exact path="/about">
+            {/* {ifTokenExists(<About />)} */}
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

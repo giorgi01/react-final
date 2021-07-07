@@ -1,0 +1,9 @@
+.nav-pills .active.bg-loginPage {
+  background-color: #2077db;
+}
+.nav-pills .active.bg-expensesPage {
+  background-color: #2bf07d;
+}
+.nav-pills .active.bg-aboutPage {
+  background-color: #f02b35;
+}
