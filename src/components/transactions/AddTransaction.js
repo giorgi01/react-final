@@ -24,11 +24,11 @@ const AddTransaction = () => {
       <h3>დაამატე ტრანზაქცია</h3>
       <form id="form" onSubmit={onSubmit}>
         <div className="form-control">
-          <label htmlFor="text">Text</label>
+          <label htmlFor="text">დანიშნულება</label>
           <input
             type="text"
             id="text"
-            placeholder="Enter text..."
+            placeholder="შეიყვანე ტექსტი..."
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
