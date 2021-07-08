@@ -3,6 +3,7 @@ import Login from './components/login/Login.js';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import useToken from './components/token/useToken';
 import Navigation from './components/navigation/navigation.js';
+import AboutPage from './pages/about/about-page';
 
 function App() {
   const { token, setToken } = useToken();
@@ -24,7 +25,7 @@ function App() {
             {/* {ifTokenExists(<ExpensesManager />)} */}
           </Route>
           <Route exact path="/about">
-            {/* {ifTokenExists(<About />)} */}
+            {ifTokenExists(<AboutPage />)}
           </Route>
         </Switch>
       </BrowserRouter>

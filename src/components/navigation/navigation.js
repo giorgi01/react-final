@@ -10,14 +10,6 @@ function Navigation() {
         <li className="nav-item">
           <NavLink
             className="nav-link"
-            to="/login"
-            activeClassName="active bg-loginPage">
-            Login
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink
-            className="nav-link"
             to="/expenses"
             activeClassName="active bg-expensesPage">
             Expenses manager
@@ -32,10 +24,7 @@ function Navigation() {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink
-            className="nav-link"
-            to="/"
-            onClick={removeToken}>
+          <NavLink className="nav-link" to="/" onClick={removeToken}>
             Log out
           </NavLink>
         </li>
