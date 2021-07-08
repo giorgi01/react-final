@@ -13,8 +13,10 @@
   width: 350px;
 } */
 
-#balance{
+#balance {
   align-self: center;
+  font-size: 20px;
+  margin-left: 47%;
 }
 
 h1 {
@@ -93,7 +95,6 @@ input[type='number'] {
   width: 100%;
 }
 
-
 .list {
   list-style-type: none;
   padding: 0;
@@ -118,7 +119,6 @@ input[type='number'] {
 .list li.minus {
   border-right: 5px solid #c0392b;
 }
-
 
 .d-flex p-2 bd-highlight {
   text-align: center;

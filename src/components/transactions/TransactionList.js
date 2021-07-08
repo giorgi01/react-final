@@ -4,6 +4,7 @@ import { Transaction } from './Transaction';
 
 const TransactionList = () => {
   const { transactions } = useContext(GlobalContext);
+  const { clearTransactions } = useContext(GlobalContext);
 
   return (
     <div>
@@ -13,6 +14,12 @@ const TransactionList = () => {
           <Transaction key={transaction.id} transaction={transaction} />
         ))}
       </ul>
+      <button
+        className="btn danger"
+        style={{ backgroundColor: 'red', width: '300px' }}
+        onClick={() => clearTransactions()}>
+        წაშალე ყველა ტრანზაქცია
+      </button>
     </div>
   );
 };
