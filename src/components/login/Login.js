@@ -29,9 +29,9 @@ export default function Login({ setToken }) {
   return (
     <form onSubmit={submitHandler}>
       <div className="form-inner">
-        <h2>Login</h2>
+        <h2>ავტორიზაცია</h2>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">მეილი:</label>
           <input
             type="email"
             name="email"
@@ -40,7 +40,7 @@ export default function Login({ setToken }) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">პაროლი:</label>
           <input
             type="password"
             name="password"
@@ -48,7 +48,7 @@ export default function Login({ setToken }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input type="submit" value="LOGIN" />
+        <input type="submit" value="ლოგინი" />
       </div>
     </form>
   );

@@ -10,9 +10,18 @@ function Navigation() {
         <li className="nav-item">
           <NavLink
             className="nav-link"
+            to="/"
+            exact
+            activeClassName="active bg-homePage">
+             მთავარი
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink
+            className="nav-link"
             to="/expenses"
             activeClassName="active bg-expensesPage">
-            Expenses manager
+            ფინანსური მენეჯერი
           </NavLink>
         </li>
         <li className="nav-item">
@@ -20,13 +29,13 @@ function Navigation() {
             className="nav-link"
             to="/about"
             activeClassName="active bg-aboutPage ">
-            About
+            შესახებ
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" to="/" onClick={removeToken}>
-            Log out
-          </NavLink>
+          <button className="nav-link" to="/" onClick={removeToken}>
+            გამოსვლა
+          </button>
         </li>
       </ul>
     </div>
