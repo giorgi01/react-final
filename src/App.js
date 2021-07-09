@@ -5,10 +5,7 @@ import useToken from './components/token/useToken';
 import Navigation from './components/navigation/navigation.js';
 import AboutPage from './pages/about-page';
 import HomePage from './pages/home-page';
-import Balance from './components/balance/Balance';
-import IncomeExpenses from './components/balance/IncomeExpenses';
-import TransactionList from './components/transactions/TransactionList';
-import AddTransaction from './components/transactions/AddTransaction';
+import ExpensesPage from './pages/expenses-page.js';
 import GlobalProvider from './context/GlobalState';
 
 import './App.css';
@@ -32,11 +29,7 @@ function App() {
               <HomePage />
             </Route>
             <Route exact path="/expenses">
-              <Balance />
-              <IncomeExpenses />
-              <TransactionList />
-              <AddTransaction />
-              {/* {ifTokenExists(<ExpensesManager />)} */}
+              {ifTokenExists(<ExpensesPage />)}
             </Route>
             <Route exact path="/about">
               {ifTokenExists(<AboutPage />)}
