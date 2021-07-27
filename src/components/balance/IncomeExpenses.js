@@ -1,19 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
+import Axios from 'axios';
 
 const IncomeExpenses = () => {
-  const { transactions } = useContext(GlobalContext);
+  const [transactions, SetTransactions] = useState([]);
+  let fetchFunc = async () =>
+    Axios({
+      method: 'GET',
+      url: 'https://aspnet-pg-gt.herokuapp.com/transaction',
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    }).then((data) => SetTransactions(data.data));
 
-  const amounts = transactions.map((transaction) => transaction.amount);
+  useEffect(fetchFunc, []);
 
-  const income = amounts
-    .filter((item) => item > 0)
+  const expenses_amount = transactions.map((transaction) =>
+    transaction.transactionType == 1 ? transaction.amount : 0
+  );
+  const incomes_amount = transactions.map((transaction) =>
+    transaction.transactionType == 0 ? transaction.amount : 0
+  );
+
+  const income = incomes_amount
+    .filter((item) => item)
     .reduce((acc, item) => (acc += item), 0)
     .toFixed(2);
 
   const expense = (
-    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
-    -1
+    expenses_amount
+      .filter((item) => item)
+      .reduce((acc, item) => (acc += item), 0) * -1
   ).toFixed(2);
 
   return (
@@ -37,4 +52,3 @@ const IncomeExpenses = () => {
 };
 
 export default IncomeExpenses;
-  

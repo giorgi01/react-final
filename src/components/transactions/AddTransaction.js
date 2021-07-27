@@ -1,22 +1,24 @@
 import React, { useState, useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
+import Axios from 'axios';
 
 const AddTransaction = () => {
   const [text, setText] = useState('');
   const [amount, setAmount] = useState(0);
 
-  const { addTransaction } = useContext(GlobalContext);
+  let addTransaction = async (text, amount, transactionType) => {
+    Axios({
+      method: 'POST',
+      url: 'https://aspnet-pg-gt.herokuapp.com/transaction',
+      data: { Text: text, Amount: amount, TransactionType: transactionType },
+      headers: { 'Access-Control-Allow-Origin': '*' },
+    });
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const newTransaction = {
-      id: Math.floor(Math.random() * 100_000_000),
-      text,
-      amount: +amount,
-    };
-
-    addTransaction(newTransaction);
+    addTransaction(text, Math.abs(amount), amount < 0 ? 1 : 0);
   };
 
   return (
